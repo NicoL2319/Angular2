@@ -15,6 +15,9 @@ import { NgFor, NgForOf } from '@angular/common';
 
 })
 export class SidebarComponent {
+titleCase(_t7: string) {
+throw new Error('Method not implemented.');
+}
   get Historial(){
     return this.gifsServise.Historial;
   }
