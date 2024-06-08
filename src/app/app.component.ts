@@ -5,6 +5,8 @@ import { SidebarComponent,} from './shared/sidebar/sidebar.component';
 import { GifsPageComponent } from './gifs/gifs-page/gifs-page.component';
 import { BusquedaComponent } from './gifs/busqueda/busqueda.component';
 import { ResultadosComponent } from './gifs/resultados/resultados.component';
+import { HttpClientModule} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,7 @@ import { ResultadosComponent } from './gifs/resultados/resultados.component';
     RouterOutlet,
     SidebarComponent,
     GifsPageComponent,
+    HttpClientModule,
     BusquedaComponent,
     ResultadosComponent,
     NgFor],
