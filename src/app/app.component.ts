@@ -5,7 +5,8 @@ import { SidebarComponent,} from './shared/sidebar/sidebar.component';
 import { GifsPageComponent } from './gifs/gifs-page/gifs-page.component';
 import { BusquedaComponent } from './gifs/busqueda/busqueda.component';
 import { ResultadosComponent } from './gifs/resultados/resultados.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { GifsService } from './gifs/services/gifs.service';
 
 
 @Component({
@@ -19,10 +20,14 @@ import { HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     BusquedaComponent,
     ResultadosComponent,
-    NgFor],
+    NgFor,
+    ],
+    providers:[GifsService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'gifsApp';
+
+
 }
