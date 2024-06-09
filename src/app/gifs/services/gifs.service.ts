@@ -8,8 +8,11 @@ import { Injectable } from '@angular/core';
 export class GifsService {
 
   private APIKEY ='cWAZ1gKetlYHv0nvEWBkxoY4XW61sU7F'
-
   private _Historial: string[] = [];
+
+  //TODO: Cambiar any por su tipo correspondiente
+  //propiedad donde se almacenan las respuestas
+  public resultados: any[]=[];
 
   get Historial(){
     return [...this._Historial];
@@ -30,9 +33,11 @@ export class GifsService {
     }
 
     //se llama a la variable http y se hace una peticion
-    this.http.get('https://api.giphy.com/v1/gifs/search?api_key=cWAZ1gKetlYHv0nvEWBkxoY4XW61sU7F&q=dragon ball&limit=10')
-      .subscribe( resp =>{
-       console.log(resp);
+    //se cambia la peticion dragon ball por el query
+    this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=cWAZ1gKetlYHv0nvEWBkxoY4XW61sU7F&q=${query} ball&limit=10`)
+      .subscribe( (resp: any) =>{
+       console.log(resp.data);
+       this.resultados= resp.data;
     })
 
     console.log(this._Historial);// imprimir por consola
