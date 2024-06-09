@@ -1,5 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Gif, SearchGifsResponse } from '../Interface/gifs.interface';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class GifsService {
 
   //TODO: Cambiar any por su tipo correspondiente
   //propiedad donde se almacenan las respuestas
-  public resultados: any[]=[];
+  public resultados: Gif[]=[];
 
   get Historial(){
     return [...this._Historial];
@@ -34,8 +35,9 @@ export class GifsService {
 
     //se llama a la variable http y se hace una peticion
     //se cambia la peticion dragon ball por el query
-    this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=cWAZ1gKetlYHv0nvEWBkxoY4XW61sU7F&q=${query} ball&limit=10`)
-      .subscribe( (resp: any) =>{
+    // se llama la informacion con get para que lusca Como la interfas SerchGifsResponse.
+    this.http.get<SearchGifsResponse>(`https://api.giphy.com/v1/gifs/search?api_key=cWAZ1gKetlYHv0nvEWBkxoY4XW61sU7F&q=${query} ball&limit=10`)
+      .subscribe( (resp) =>{
        console.log(resp.data);
        this.resultados= resp.data;
     })
