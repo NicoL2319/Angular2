@@ -31,6 +31,10 @@ export class GifsService {
     if(!this._Historial.includes(query)){ //si no lo incluye entonces
       this._Historial.unshift(query);  //para que no se repita las mismas palabras en el Historial
       this._Historial = this._Historial.splice(0,10); //poniendo limites al Historial
+
+      //Guardar en el localStorage para que al refrescar no se pierda lo buscado
+      localStorage.setItem('Historial',JSON.stringify(this._Historial));
+
     }
 
     //se llama a la variable http y se hace una peticion
