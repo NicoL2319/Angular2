@@ -20,7 +20,11 @@ export class GifsService {
   }
 
   //para poder hacer peticiones http en base a observable
- constructor(private http:HttpClient){}
+ constructor(private http:HttpClient){
+
+  //para que el historial permanesca cuando se recarga la pagina llamando al localStorage.
+  this._Historial = JSON.parse(localStorage.getItem('Historial')!) || [];
+ }
 
   busquedaGifs( query:string){
 
