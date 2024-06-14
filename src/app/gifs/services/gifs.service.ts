@@ -24,6 +24,7 @@ export class GifsService {
 
   //para que el historial permanesca cuando se recarga la pagina llamando al localStorage.
   this._Historial = JSON.parse(localStorage.getItem('Historial')!) || [];
+  this.resultados = JSON.parse(localStorage.getItem('resultados')!) || [];
  }
 
   busquedaGifs( query:string){
@@ -48,6 +49,8 @@ export class GifsService {
       .subscribe( (resp) =>{
        console.log(resp.data);
        this.resultados= resp.data;
+       localStorage.setItem('resultados', JSON.stringify(this.resultados));
+
     })
 
     console.log(this._Historial);// imprimir por consola
